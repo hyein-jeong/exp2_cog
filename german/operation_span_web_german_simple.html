@@ -1,0 +1,460 @@
+<html>
+<head>
+    <title>Gedächtnistest</title>
+    <script src="jquery.min.js"></script>
+    <script src="jspsych.js"></script>
+    <script src="plugins/jspsych-text.js"></script>
+    <script src="plugins/jspsych-single-stim.js"></script>
+    <script src="plugins/jspsych-survey-text.js"></script>
+    <script src="plugins/jspsych-survey-likert.js"></script>
+    <script src="plugins/jspsych-instructions.js"></script>
+    <link href="css/jspsych.css" rel="stylesheet" type="text/css">
+    <link href="css/rst.css" rel="stylesheet" type="text/css">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
+</head>
+<script>
+//instructions
+var instructions_block = {
+  type: 'instructions',
+  pages: ['<p><strong>Willkommen zum Experiment!</strong></p>' +
+  '<p>Die folgende Aufgabe besteht aus zwei Teilen. Im ersten Teil erscheinen Gleichungen auf dem Bildschirm, ' +
+  'die du durchrechnen sollst. Diese Gleichungen können korrekt sein (z.B. <i>(4 ÷ 1) + 2 = 6</i>) oder nicht ' +
+  '(z.B. <i>(5 x 2) / 3 = 4</i>). Deine erste Aufgabe ist es, jede Gleichung zu beurteilen, indem du auf eine ' +
+  'Taste drückst, um anzugeben, ob sie korrekt ist oder nicht (&larr; = ja, &rarr; = nein). Nach dieser Entscheidung ' +
+  'siehst du eine Ziffer auf dem Bildschirm. Deine zweite Aufgabe ist es, dir diese Ziffer zu merken, um sie später ' +
+  'wiederholen zu können.</p>' +
+  '<p>Nach zwei bis sechs Gleichungen (die du beurteilen sollst) und Ziffern (die du dir merken sollst) siehst du ein Fenster ' +
+  'mit sechs leeren Feldern. Wenn das passiert, gib die Ziffern ein, an die du dich erinnerst. Oft ist es einfacher, ' +
+  'die Ziffern in der Reihenfolge aufzuschreiben, in der sie präsentiert wurden, aber das ist nicht unbedingt notwendig. '+
+  'Verwende bitte nur ein Feld pro Ziffer. Nachdem du alle Ziffern, an die du dich erinnerst, eingetragen hast, ' +
+  'kannst du die nächste Runde starten, indem du auf "Weiter" klickst.</p>' +
+  '<p>Du kannst das Experiment beginnen, indem du auf ENTER drückst.</p>'],
+   key_forward: 13,
+};
+
+//first practice block
+var practice_block11 = {
+  type: "single-stim",
+  stimulus: ['<p>(6 ÷ 3) + 2 = 7</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'practice', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var practice_block12 = {
+  type: "single-stim",
+  stimulus: ['<p>9</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'}, data: {phase: 'mem_pra'},
+  is_html: true,
+};
+
+var practice_block13 = {
+  type: "single-stim",
+  stimulus: ['<p>(5 x 2) - 4 = 6</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'practice', response: '37'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var practice_block14 = {
+  type: "single-stim",
+  stimulus: ['<p>3</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'}, data: {phase: 'mem_pra'},
+  is_html: true,
+};
+
+var practice_block15 = {
+  type: "single-stim",
+  stimulus: ['<p>(8 ÷ 4) + 3 = 1</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'practice', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var practice_block16 = {
+  type: "single-stim",
+  stimulus: ['<p>5</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'}, data: {phase: 'mem_pra'},
+  is_html: true,
+};
+
+//second practice block
+var practice_block21 = {
+  type: "single-stim",
+  stimulus: ['<p>(3 x 4) - 3 = 9</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'practice', response: '37'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var practice_block22 = {
+  type: "single-stim",
+  stimulus: ['<p>7</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'}, data: {phase: 'mem_pra'},
+  is_html: true,
+};
+
+var practice_block23 = {
+  type: "single-stim",
+  stimulus: ['<p>(8 ÷ 4) + 2 = 2</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'practice', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var practice_block24 = {
+  type: "single-stim",
+  stimulus: ['<p>5</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'}, data: {phase: 'mem_pra'},
+  is_html: true,
+};
+
+var practice_block25 = {
+  type: "single-stim",
+  stimulus: ['<p>(9 ÷ 3) - 2 = 2</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'practice', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var practice_block26 = {
+  type: "single-stim",
+  stimulus: ['<p>6</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'}, data: {phase: 'mem_pra'},
+  is_html: true,
+};
+
+//practice phase ends here
+
+//block 1
+var exp_block11 = {
+  type: "single-stim",
+  stimulus: ['<p>(10 ÷ 2) - 3 = 2</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block12 = {
+  type: "single-stim",
+  stimulus: ['<p>4</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block13 = {
+  type: "single-stim",
+  stimulus: ['<p>(10 ÷ 10) - 1 = 2</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block14 = {
+  type: "single-stim",
+  stimulus: ['<p>9</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block15 = {
+  type: "single-stim",
+  stimulus: ['<p>(7 ÷ 1) + 2 = 7</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block16 = {
+  type: "single-stim",
+  stimulus: ['<p>5</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+//block 2
+var exp_block21 = {
+  type: "single-stim",
+  stimulus: ['<p>(3 ÷ 1) - 2 = 3</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block22 = {
+  type: "single-stim",
+  stimulus: ['<p>8</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block23 = {
+  type: "single-stim",
+  stimulus: ['<p>(2 x 1) - 1 = 1</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '37'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block24 = {
+  type: "single-stim",
+  stimulus: ['<p>5</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block25 = {
+  type: "single-stim",
+  stimulus: ['<p>(10 ÷ 1) + 3 = 13</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '37'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block26 = {
+  type: "single-stim",
+  stimulus: ['<p>7</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block27 = {
+  type: "single-stim",
+  stimulus: ['<p>(9 x 2) + 1 = 18</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block28 = {
+  type: "single-stim",
+  stimulus: ['<p>6</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block29 = {
+  type: "single-stim",
+  stimulus: ['<p>(9 ÷ 1) - 7 = 4</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block210 = {
+  type: "single-stim",
+  stimulus: ['<p>3</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+//block 3
+var exp_block31 = {
+  type: "single-stim",
+  stimulus: ['<p>(8 x 4) - 2 = 32</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block32 = {
+  type: "single-stim",
+  stimulus: ['<p>1</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block33 = {
+  type: "single-stim",
+  stimulus: ['<p>(9 x 3) - 3 = 24</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nee</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '37'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block34 = {
+  type: "single-stim",
+  stimulus: ['<p>6</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+var exp_block35 = {
+  type: "single-stim",
+  stimulus: ['<p>(4 ÷ 1) + 1 = 4</p>' +
+                '<div style="width:600px;margin:auto"><button class="jspsych-btn-yes">&larr;<br>ja</button>' +
+                '<div class="divider"/><button class="jspsych-btn-no">&rarr;<br>nein</button></div></p>'],
+  choices: [37, 39],
+  timing_response: 10000,
+  is_html: true,
+  data: {phase: 'exp', response: '39'},
+  response_ends_trial: true,
+  timing_post_trial: 500,
+};
+
+var exp_block36 = {
+  type: "single-stim",
+  stimulus: ['<p>2</p>'],
+  choices: [100], timing_response: 1200, data: {phase: 'mem'},
+  is_html: true,
+};
+
+//experimental phase ends here
+
+//recall block
+var recall_block = {
+  type: 'survey-text',
+  preamble: ["<div style='margin-top: 20%'>An welche Ziffern erinnerst du dich?</div>"],
+  questions: [" ", " ", " ", " ", " ", " "],
+  rows: [2, 2, 2, 2, 2, 2],
+  columns: [50, 50, 50, 50, 50, 50]
+};
+
+//timeline structure
+var timeline = [];
+timeline.push(instructions_block);
+timeline.push(practice_block11);
+timeline.push(practice_block12);
+timeline.push(practice_block13);
+timeline.push(practice_block14);
+timeline.push(practice_block15);
+timeline.push(practice_block16);
+timeline.push(recall_block);
+timeline.push(practice_block21);
+timeline.push(practice_block22);
+timeline.push(practice_block23);
+timeline.push(practice_block24);
+timeline.push(practice_block25);
+timeline.push(practice_block26);
+timeline.push(recall_block);
+timeline.push(exp_block11);
+timeline.push(exp_block12);
+timeline.push(exp_block13);
+timeline.push(exp_block14);
+timeline.push(exp_block15);
+timeline.push(exp_block16);
+timeline.push(recall_block);
+timeline.push(exp_block21);
+timeline.push(exp_block22);
+timeline.push(exp_block23);
+timeline.push(exp_block24);
+timeline.push(exp_block25);
+timeline.push(exp_block26);
+timeline.push(exp_block27);
+timeline.push(exp_block28);
+timeline.push(exp_block29);
+timeline.push(exp_block210);
+timeline.push(recall_block);
+timeline.push(exp_block31);
+timeline.push(exp_block32);
+timeline.push(exp_block33);
+timeline.push(exp_block34);
+timeline.push(exp_block35);
+timeline.push(exp_block36);
+timeline.push(recall_block);
+
+//function to save the data
+function saveData(filename, filedata){
+   $.ajax({
+      type:'post',
+      cache: false,
+      url: 'save_data.php',
+      data: {filename: filename, filedata: filedata}
+   });
+}
+
+//create random participant number
+var subject_ID = Math.floor(Math.random()*10000);
+
+//initialise experiment
+jsPsych.init({
+   timeline: timeline,
+   fullscreen: true,
+   on_finish: function(data){
+        saveData("operation_span_web_german_" + subject_ID + ".csv", jsPsych.data.getDataAsCSV());
+   }
+});
+</script>
+</html>
