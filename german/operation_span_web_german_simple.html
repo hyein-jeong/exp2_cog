@@ -8,6 +8,7 @@
     <script src="plugins/jspsych-survey-text.js"></script>
     <script src="plugins/jspsych-survey-likert.js"></script>
     <script src="plugins/jspsych-instructions.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link href="css/jspsych.css" rel="stylesheet" type="text/css">
     <link href="css/rst.css" rel="stylesheet" type="text/css">
     <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
@@ -451,21 +452,21 @@ function saveData(filename, filedata){
 var subject_ID = Math.floor(Math.random()*10000);
 
 //initialise experiment
-jsPsych.init({
-   timeline: timeline,
-   fullscreen: true,
-   on_finish: function(data){
-        jsPsych.data.localSave('operation_span_results.csv', 'csv');
-   }
-});
-    
-//initialise experiment
 //jsPsych.init({
 //   timeline: timeline,
 //   fullscreen: true,
 //   on_finish: function(data){
-//        saveData("operation_span_web_german_" + subject_ID + ".csv", jsPsych.data.getDataAsCSV());
+//        jsPsych.data.localSave('operation_span_results.csv', 'csv');
 //   }
 //});
+    
+//initialise experiment
+jsPsych.init({
+   timeline: timeline,
+   fullscreen: true,
+   on_finish: function(data){
+        saveData("operation_span_web_german_" + subject_ID + ".csv", jsPsych.data.getDataAsCSV());
+   }
+});
 </script>
 </html>
