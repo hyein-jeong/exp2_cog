@@ -392,10 +392,21 @@ var recall_block = {
   rows: [2, 2, 2, 2, 2, 2],
   columns: [50, 50, 50, 50, 50, 50]
 };
+    
+    
+//profile block
+var profile_block = {
+  type: 'survey-text',
+  preamble: ["<div style='margin-top: 20%'>What is your prolific ID?</div>"],
+  questions: [" "],
+  rows: [2],
+  columns: [50]
+};
 
 //timeline structure
 var timeline = [];
 timeline.push(instructions_block);
+timeline.push(prolific_block);
 timeline.push(practice_block11);
 timeline.push(practice_block12);
 timeline.push(practice_block13);
@@ -435,6 +446,7 @@ timeline.push(exp_block34);
 timeline.push(exp_block35);
 timeline.push(exp_block36);
 timeline.push(recall_block);
+
 
 
     
