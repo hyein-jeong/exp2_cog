@@ -398,9 +398,9 @@ var recall_block = {
 var profile_block = {
   type: 'survey-text',
   preamble: ["<div style='margin-top: 20%'>What is your prolific ID?</div>"],
-  questions: [" "],
-  rows: [2],
-  columns: [50]
+  questions: [" ", " ", " ", " ", " ", " "],
+  rows: [2, 2, 2, 2, 2, 2],
+  columns: [50, 50, 50, 50, 50, 50]
 };
     
 //instructions_final_block
@@ -450,7 +450,7 @@ function saveData(filename, filedata){
 }
 
 //create random participant number
-var subject_ID = Math.floor(Math.random()*1000);
+var subject_ID = Math.floor(Math.random()*100);
 
 //initialise experiment
 //jsPsych.init({
