@@ -402,6 +402,16 @@ var profile_block = {
   rows: [2],
   columns: [50]
 };
+    
+//instructions_final_block
+var instructions_final_block = {
+  type: 'instructions',
+  pages: ['<p><strong>Vielen dank für Ihre Teilnahme!</strong></p>' +
+  '<p>Please write your completion code to validate the participation.' +
+  'After the completion of this uploading, You will be redirected to Prolific.</p>' +
+  '<p>Du kannst das Experiment beginnen, indem du auf ENTER drückst.</p>'],
+   key_forward: 13,
+};
 
 //timeline structure
 var timeline = [];
@@ -427,6 +437,7 @@ timeline.push(exp_block13);
 timeline.push(exp_block14);
 timeline.push(exp_block15);
 timeline.push(exp_block16);
+timeline.push(instructions_final_block);
     
 //function to save the data
 function saveData(filename, filedata){
@@ -439,7 +450,8 @@ function saveData(filename, filedata){
 }
 
 //create random participant number
-var subject_ID = Math.floor(Math.random()*10000);
+var subject_ID = test1117
+    //Math.floor(Math.random()*10000);
 
 //initialise experiment
 //jsPsych.init({
@@ -455,7 +467,7 @@ jsPsych.init({
    timeline: timeline,
    fullscreen: true,
    on_finish: function(data){
-        saveData("operation_span_web_german_" + profile_block + ".csv", jsPsych.data.getDataAsCSV());
+        saveData("operation_span_web_german_" + subject_ID + ".csv", jsPsych.data.getDataAsCSV());
    }
 });
 </script>
